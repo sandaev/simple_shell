@@ -81,14 +81,13 @@ void execute(char **args)
 {
 	pid_t child_pid = fork();
 	int stat;
-	/*extern char *environ;*/
+	extern char *environ;
 
 	if (child_pid == 0)
 	{
 		if (args[0] != NULL)
 		{
-		/*execvp(args[0], args);*/
-		execve(args[0], args, NULL);
+		execve(args[0], args, &environ);
 		perror("cisfun");
 		exit(1);
 
