@@ -65,3 +65,39 @@ char **split_line(char *line)
 	tokens[i] = NULL;
 	return (tokens);
 }
+
+/**
+ * execute- Function executes commands in the shell
+ * @args: Double pointer parameter
+ * Description: Executes commands entered in the shell
+ *
+ * Return: the output of the command and cisfun if error is encountered
+ */
+void execute(char **args)
+{
+	pid_t child_pid = fork();
+	int stat;
+	/*extern char *environ;*/
+
+	if (child_pid == 0)
+	{
+		if (args[0] != NULL)
+		{
+		/*execvp(args[0], args);*/
+		execve(args[0], args, NULL);
+		perror("cisfun");
+		exit(1);
+
+		}
+	}
+	else if (child_pid > 0)
+	{
+		do {
+			waitpid(child_pid, &stat, WUNTRACED);
+		} while (!WIFEXITED(stat) && !WIFSIGNALED(stat));
+	}
+	else
+	{
+		perror("cisfun");
+	}
+}
