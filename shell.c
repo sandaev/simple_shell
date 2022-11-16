@@ -10,10 +10,14 @@ char *read_line(void)
 {
 	char *line;
 	size_t n = 0;
-	size_t num_line;
-	(void) num_line;
+	ssize_t num_line;
+	void num_line;
 
-	getline(&line, &n, stdin);
+	num_line = getline(&line, &n, stdin);
+	if (num_line == -1)
+	{
+		return (NULL);
+	}
 	return (line);
 }
 /**

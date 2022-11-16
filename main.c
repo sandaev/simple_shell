@@ -19,6 +19,11 @@ int main(void)
 	{
 		printf("%s", prompt);
 		line = read_line();
+		if (!line)
+		{
+			printf("\n");
+			exit(0);
+		}
 		tokens = split_line(line);
 		execute(tokens);
 	}
