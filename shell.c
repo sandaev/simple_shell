@@ -11,6 +11,7 @@ char *read_line(void)
 	char *line;
 	size_t n = 0;
 	size_t num_line;
+	(void) num_line;
 
 	getline(&line, &n, stdin);
 	return (line);

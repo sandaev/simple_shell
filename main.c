@@ -12,6 +12,8 @@ int main(void)
 	size_t n = 0;
 	int i;
 	int status = 1;
+	(void) n;
+	(void) i;
 
 	while (status)
 	{
@@ -22,4 +24,5 @@ int main(void)
 	}
 	free(line);
 	free(tokens);
+	return (0);
 }
