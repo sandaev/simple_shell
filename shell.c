@@ -1,7 +1,6 @@
 #include "main.h"
 /**
-* read_line: Function reads a line of code
-* DESCRIPTION: Reads a line of code
+* read_line - Function reads a line of code
 *
 * Return: line
 *
