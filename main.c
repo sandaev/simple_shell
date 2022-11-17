@@ -26,6 +26,8 @@ int main(void)
 		}
 		tokens = split_line(line);
 		execute(tokens);
+		free(line);
+		free(tokens);
 	}
 	free(line);
 	free(tokens);

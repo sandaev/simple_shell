@@ -34,7 +34,7 @@ char **split_line(char *line)
 	char *tok;
 	int num_toks = 0;
 	int i;
-	char *delim = " \t\r\n";
+	char *delim = "\n";
 
 	line_copy = strdup(line);
 	/* Get number of words (commanda) in string */
@@ -49,8 +49,8 @@ char **split_line(char *line)
 	tokens = malloc(sizeof(char *) * num_toks);
 	if (tokens == NULL)
 	{
-		perror("cisfun");
-		exit(-1);
+		perror("./shell");
+		exit(0);
 	}
 	/* Add each word (command) to the array */
 	tok = strtok(line_copy, delim);
@@ -59,14 +59,15 @@ char **split_line(char *line)
 		token = malloc(sizeof(char) * strlen(tok));
 		if (token == NULL)
 		{
-			perror("cisfun");
-			exit(-1);
+			perror("./shell");
+			exit(0);
 		}
 		strcpy(token, tok);
 		tokens[i] = token;
 		tok = strtok(NULL, delim);
 	}
 	tokens[i] = NULL;
+	free(line_copy);
 	return (tokens);
 }
 
@@ -88,8 +89,8 @@ void execute(char **args)
 		if (args[0] != NULL)
 		{
 		execve(args[0], args, &environ);
-		perror("cisfun");
-		exit(1);
+		perror("./shell");
+		exit(0);
 
 		}
 	}
@@ -101,6 +102,6 @@ void execute(char **args)
 	}
 	else
 	{
-		perror("cisfun");
+		perror("./shell");
 	}
 }
