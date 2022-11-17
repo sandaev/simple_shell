@@ -6,7 +6,7 @@
  */
 int main(void)
 {
-	char *prompt = "cisfun$ ";
+	/*char *prompt = "cisfun$ ";*/
 	char *line;
 	char **tokens = NULL;
 	size_t n = 0;
@@ -17,7 +17,7 @@ int main(void)
 
 	while (status)
 	{
-		printf("%s", prompt);
+		printf("swsh$ ");
 		line = read_line();
 		if (!line)
 		{
